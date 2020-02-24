@@ -8,7 +8,7 @@ class App extends React.Component {
   state = {};
 
   componentDidMount() {
-    axios.get('http://hotel-api-belarus.herokuapp.com/welcome',Auth.createConfig())
+    axios.get('https://hotel-api-belarus.herokuapp.com/welcome',Auth.createConfig())
         .then(json => this.setState({message: json.data.message}))
         .catch(error => console.log(error))
   }
