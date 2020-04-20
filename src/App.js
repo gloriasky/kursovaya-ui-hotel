@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
         <div>
           <NavigationBar />
-          {this.state.message}
+          {Auth.loggedIn() && this.state.message}
         </div>
     );
 
