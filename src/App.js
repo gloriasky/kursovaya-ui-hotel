@@ -20,7 +20,10 @@ class App extends React.Component {
     return (
         <div>
           <NavigationBar />
-          {Auth.loggedIn() && this.state.message}
+           <div className='App-root d-block mx-auto'>
+               {Auth.loggedIn() && <h3 className='text-center'>Welcome {Auth.getUser().firstName} to {properties.hotelName}</h3>}
+               {this.state.message}
+           </div>
         </div>
     );
 

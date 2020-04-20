@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.App-root {
+  width: 50vw;
+  padding: 15px;
+  background-color: beige;
+}
