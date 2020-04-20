@@ -1,39 +1,32 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import * as Auth from './AuthService';
 import './NavigationBar.css';
 import {properties} from "./properties";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 
  export class NavigationBar extends Component {
 
     render() {
+
+        let title = <img alt='account' src='/account.png' />;
+
         return (
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg">
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="#home">{properties.hotelName}</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link href="/">Home</Nav.Link>
                         </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                        {!Auth.loggedIn() && <Nav.Link href="/login" inline><img alt='login' src='login.png' /></Nav.Link>}
+                        {Auth.loggedIn() &&  <div><NavDropdown title={title} alignRight id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/account">See account info</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/" inline onClick={() => Auth.logout()}>Log out</NavDropdown.Item>
+                        </NavDropdown></div>}
                     </Navbar.Collapse>
                 </Navbar>
             </div>
