@@ -94,7 +94,6 @@ class Registration extends Component {
                     'email': this.state.email,
                     'firstName': this.state.firstName,
                     'lastName': this.state.lastName,
-                    'phone': this.state.phone,
                     'password': this.state.password,
                 }, Auth.createConfig())
                     .then(() => {
@@ -103,7 +102,8 @@ class Registration extends Component {
                             email: '',
                             firstName: '',
                             lastName: '',
-                            phone: '',
+                            password: '',
+                            password2: ''
                         });
                     })
                     .catch(error => alert(error.response.data))
@@ -148,11 +148,6 @@ class Registration extends Component {
                                 <FormLabel>Last Name</FormLabel>
                                 <FormControl type="text" value={this.state.lastName}
                                              onChange={e => this.setState({lastName: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup controlId="phone">
-                                <FormLabel>Phone Number</FormLabel>
-                                <FormControl type="text" value={this.state.phone}
-                                             onChange={e => this.setState({phone: e.target.value})}/>
                             </FormGroup>
                             <FormGroup controlId="password">
                                 <FormLabel>Input your password</FormLabel>
