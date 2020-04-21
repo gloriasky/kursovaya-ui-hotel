@@ -4,5 +4,6 @@ const url = `${properties.apiUrl}/api`;
 
 export const routes = {
     login: `${url}/login`,
-    createUser: `${url}/user`
+    createUser: `${url}/user`,
+    validatePermission: `${url}/validate_permission`
 };

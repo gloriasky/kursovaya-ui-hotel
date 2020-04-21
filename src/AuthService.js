@@ -1,4 +1,6 @@
 import decode from 'jwt-decode';
+import axios from 'axios';
+import {routes} from "./routes";
 
 const token_item = 'hub_token';
 const user_item = 'hub_user';
@@ -26,6 +28,10 @@ export function createConfig() {
     return token
         ? { headers: {'Authorization': 'Bearer ' + getToken()} }
         : {}
+}
+
+export function validatePermissions(permission, state, key){
+    return axios.get(`${routes.validatePermission}?permission=${permission}`, createConfig())
 }
 
 export function loggedIn() {
