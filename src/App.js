@@ -13,7 +13,7 @@ class App extends React.Component {
         axios.get(`${properties.apiUrl}/welcome`, Auth.createConfig())
             .then(json => this.setState({message: json.data.message}))
             .catch(error => console.log(error))
-        Auth.validatePermissions('admin', this.state, 'isAdmin')
+        Auth.validatePermissions('admin')
             .then(() => this.setState({isAdmin: true}))
             .catch(() => this.setState({isAdmin: false}))
     }

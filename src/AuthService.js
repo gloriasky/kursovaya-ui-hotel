@@ -30,7 +30,7 @@ export function createConfig() {
         : {}
 }
 
-export function validatePermissions(permission, state, key){
+export function validatePermissions(permission){
     return axios.get(`${routes.validatePermission}?permission=${permission}`, createConfig())
 }
 
