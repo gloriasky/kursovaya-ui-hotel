@@ -40,5 +40,6 @@
 .App-root {
   width: 50vw;
   padding: 15px;
-  background-color: beige;
+  background-color: white;
+  opacity: 80%;
 }

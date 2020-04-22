@@ -1,10 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from './App'
+import * as Auth from './AuthService'
 import {Login} from './Login';
+import {Account} from './Account'
 
 export const router = <BrowserRouter>
     <Switch>
+        <Route path='/account'
+               render={props => Auth.loggedIn() ? <Account {...props}/> : <Redirect to={Auth.redirectToLogin()}/>}
+        />
         <Route path='/login'
                render={props => <Login {...props}/>}
         />
