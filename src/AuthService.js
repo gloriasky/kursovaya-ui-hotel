@@ -1,6 +1,7 @@
 import decode from 'jwt-decode';
 import axios from 'axios';
 import {routes} from "./routes";
+import * as _ from "lodash";
 
 const token_item = 'hub_token';
 const user_item = 'hub_user';
@@ -47,6 +48,10 @@ export function isTokenExpired(token) {
     catch (err) {
         return false;
     }
+}
+
+export function  beautifyKey(key){
+    return _.capitalize(_.upperCase(key))
 }
 
 export function extractRedirect() {

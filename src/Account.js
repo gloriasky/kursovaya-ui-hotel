@@ -6,16 +6,12 @@ import {NavigationBar} from './NavigationBar'
 
 class Info extends React.Component {
 
-    beautifyKey(key){
-        return _.capitalize(_.upperCase(key))
-    }
-
     render() {
 
         let info = []
         let user = this.props.user;
         for (let key in user) {
-            info.push(<p>{this.beautifyKey(key)}: {user[key]}</p>)
+            info.push(<p>{Auth.beautifyKey(key)}: {user[key]}</p>)
         }
 
         return (
