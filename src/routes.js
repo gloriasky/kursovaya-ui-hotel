@@ -10,5 +10,12 @@ export const routes = {
     updateRoom: `${url}/update/room`,
     deleteRoom: `${url}/delete/room`,
     getRooms:`${url}/rooms`,
-    validatePermission: `${url}/validate_permission`
+    addService: `${url}/add/service`,
+    getService: `${url}/get/service`,
+    updateService: `${url}/update/service`,
+    deleteService: `${url}/delete/service`,
+    getServices:`${url}/services`,
+    validatePermission: `${url}/validate_permission`,
+    uploadImage: `${url}/upload/image`,
+    getImage: `${url}/get/image`
 };

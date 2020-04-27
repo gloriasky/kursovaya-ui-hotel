@@ -5,6 +5,7 @@ import * as Auth from './AuthService'
 import {Login} from './Login';
 import {Account} from './Account'
 import {RoomPage} from "./RoomPage";
+import {ServicePage} from "./ServicePage";
 
 export const router = <BrowserRouter>
     <Switch>
@@ -16,6 +17,9 @@ export const router = <BrowserRouter>
         />
         <Route path='/rooms'
                render={props => <RoomPage {...props}/>}
+        />
+        <Route path='/services'
+               render={props => <ServicePage {...props}/>}
         />
         <Route path='/*'
                render={props => <App {...props}/>}/>}

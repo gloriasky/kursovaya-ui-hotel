@@ -21,6 +21,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
                         <Nav className="mr-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/rooms">Our rooms</Nav.Link>
+                            <Nav.Link href="/services">Our services</Nav.Link>
                         </Nav>
                         {!Auth.loggedIn() && <Nav.Link href="/login" inline><img alt='login' src='login.png' /></Nav.Link>}
                         {Auth.loggedIn() &&  <div><NavDropdown title={title} alignRight id="basic-nav-dropdown">
