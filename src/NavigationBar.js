@@ -8,7 +8,15 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
  export class NavigationBar extends Component {
 
-    render() {
+     state = {};
+
+     componentDidMount() {
+         Auth.validatePermissions('admin')
+             .then(() => this.setState({isAdmin: true}))
+             .catch(() => this.setState({isAdmin: false}));
+     }
+
+     render() {
 
         let title = <img alt='account' src='/account.png' />;
 
@@ -26,6 +34,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
                         {!Auth.loggedIn() && <Nav.Link href="/login" inline><img alt='login' src='login.png' /></Nav.Link>}
                         {Auth.loggedIn() &&  <div><NavDropdown title={title} alignRight id="basic-nav-dropdown">
                             <NavDropdown.Item href="/account">See account info</NavDropdown.Item>
+                            {this.state.isAdmin && <NavDropdown.Item href="/employees">See employees info</NavDropdown.Item>}
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/" inline onClick={() => Auth.logout()}>Log out</NavDropdown.Item>
                         </NavDropdown></div>}
