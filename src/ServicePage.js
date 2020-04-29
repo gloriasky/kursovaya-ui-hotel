@@ -288,7 +288,7 @@ export class ServicePage extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.isAdmin !== prevProps.isAdmin) {
+        if (this.state.isAdmin !== prevState.isAdmin) {
             this.getServices()
         }
     }
