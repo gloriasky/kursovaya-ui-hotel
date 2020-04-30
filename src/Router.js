@@ -7,6 +7,7 @@ import {Account} from './Account'
 import {RoomPage} from "./RoomPage";
 import {ServicePage} from "./ServicePage";
 import {EmployeesPage} from "./EmployeesPage";
+import {GuestsPage} from "./GuestsPage";
 
 export const router = <BrowserRouter>
     <Switch>
@@ -24,6 +25,10 @@ export const router = <BrowserRouter>
         />
         <Route path='/employees'
                render={props => Auth.loggedIn() ? <EmployeesPage {...props}/> : <Redirect to={Auth.redirectToLogin()}/>}
+
+        />
+        <Route path='/guests'
+               render={props => Auth.loggedIn() ? <GuestsPage {...props}/> : <Redirect to={Auth.redirectToLogin()}/>}
 
         />
         <Route path='/*'

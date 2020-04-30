@@ -35,6 +35,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
                         {Auth.loggedIn() &&  <div><NavDropdown title={title} alignRight id="basic-nav-dropdown">
                             <NavDropdown.Item href="/account">See account info</NavDropdown.Item>
                             {this.state.isAdmin && <NavDropdown.Item href="/employees">See employees info</NavDropdown.Item>}
+                            {this.state.isAdmin && <NavDropdown.Item href="/guests">See registered guests</NavDropdown.Item>}
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/" inline onClick={() => Auth.logout()}>Log out</NavDropdown.Item>
                         </NavDropdown></div>}

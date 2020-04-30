@@ -4,7 +4,9 @@ const url = `${properties.apiUrl}/api`;
 
 export const routes = {
     login: `${url}/login`,
-    createUser: `${url}/user`,
+    addGuest: `${url}/user`,
+    getGuest: `${url}/get/guest`,
+    getGuests:`${url}/guests`,
     addRoom: `${url}/add/room`,
     getRoom: `${url}/get/room`,
     updateRoom: `${url}/update/room`,
