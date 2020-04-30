@@ -67,7 +67,7 @@ class Reset extends Component {
     }
 }
 
-class Registration extends Component {
+export class Registration extends Component {
 
     constructor(props) {
         super(props);
@@ -90,10 +90,11 @@ class Registration extends Component {
         if (this.state.email.length > 0) {
             if (this.state.password === this.state.password2) {
                 this.setState({submitInProgress: true});
-                axios.post(routes.createUser, {
+                axios.post(routes.addGuest, {
                     'email': this.state.email,
                     'firstName': this.state.firstName,
                     'lastName': this.state.lastName,
+                    'pnone': this.state.phone,
                     'password': this.state.password,
                 }, Auth.createConfig())
                     .then(() => {
@@ -102,6 +103,7 @@ class Registration extends Component {
                             email: '',
                             firstName: '',
                             lastName: '',
+                            phone: '',
                             password: '',
                             password2: ''
                         });
@@ -148,6 +150,12 @@ class Registration extends Component {
                                 <FormLabel>Last Name</FormLabel>
                                 <FormControl type="text" value={this.state.lastName}
                                              onChange={e => this.setState({lastName: e.target.value})}/>
+                            </FormGroup>
+                            <FormGroup controlId="phone" className="required"
+                                       validationState={this.checkRequired(this.state.phone)}>
+                                <FormLabel>Phone</FormLabel>
+                                <FormControl type="text" value={this.state.phone}
+                                             onChange={e => this.setState({phone: e.target.value})}/>
                             </FormGroup>
                             <FormGroup controlId="password">
                                 <FormLabel>Input your password</FormLabel>
