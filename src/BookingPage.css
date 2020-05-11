@@ -1,0 +1,22 @@
+.Booking-page-root {
+    width: 51vw;
+    padding: 15px;
+    background-color: white;
+}
+
+.My-booking-page-root {
+    width: 81vw;
+    padding: 15px;
+    background-color: white;
+}
+
+.Booked {
+    background-color: cornsilk;
+}
+
+.Cancelled {
+    background-color: #f7dcdc;
+}
+.Checked-In {
+    background-color: #def7dc;
+}
