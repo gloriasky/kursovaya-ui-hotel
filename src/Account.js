@@ -8,10 +8,12 @@ class Info extends React.Component {
 
     render() {
 
-        let info = []
+        let info = [];
         let user = this.props.user;
         for (let key in user) {
-            info.push(<p>{Auth.beautifyKey(key)}: {user[key]}</p>)
+            if (key !== '_id') {
+                info.push(<p>{Auth.beautifyKey(key)}: {user[key]}</p>)
+            }
         }
 
         return (
