@@ -34,6 +34,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
                         {!Auth.loggedIn() && <Nav.Link href="/login" inline><img alt='login' src='login.png' /></Nav.Link>}
                         {Auth.loggedIn() &&  <div><NavDropdown title={title} alignRight id="basic-nav-dropdown">
                             <NavDropdown.Item href="/account">See account info</NavDropdown.Item>
+                            <NavDropdown.Item href="/my/bookings">{this.state.isAdmin ? 'All' : 'My'} bookings</NavDropdown.Item>
                             {this.state.isAdmin && <NavDropdown.Item href="/employees">See employees info</NavDropdown.Item>}
                             {this.state.isAdmin && <NavDropdown.Item href="/guests">See registered guests</NavDropdown.Item>}
                             <NavDropdown.Divider />
