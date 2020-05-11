@@ -8,6 +8,7 @@ import {RoomPage} from "./RoomPage";
 import {ServicePage} from "./ServicePage";
 import {EmployeesPage} from "./EmployeesPage";
 import {GuestsPage} from "./GuestsPage";
+import {BookingPage, EditBooking, MyBookingsPage} from "./BookingPage";
 
 export const router = <BrowserRouter>
     <Switch>
@@ -19,6 +20,15 @@ export const router = <BrowserRouter>
         />
         <Route path='/rooms'
                render={props => <RoomPage {...props}/>}
+        />
+        <Route path='/book/room'
+               render={props => Auth.loggedIn() ? <BookingPage {...props}/>  : <Redirect to={Auth.redirectToLogin()}/>}
+        />
+        <Route path='/my/bookings'
+               render={props => Auth.loggedIn() ? <MyBookingsPage {...props}/>  : <Redirect to={Auth.redirectToLogin()}/>}
+        />
+        <Route path='/booking'
+               render={props => Auth.loggedIn() ? <EditBooking {...props}/>  : <Redirect to={Auth.redirectToLogin()}/>}
         />
         <Route path='/services'
                render={props => <ServicePage {...props}/>}
