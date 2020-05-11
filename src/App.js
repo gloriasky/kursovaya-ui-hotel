@@ -98,7 +98,9 @@ class App extends React.Component {
                              onClick={() => this.search()}/>
                     </Form>
                     {this.state.rooms.length > 0 && <h3 className='text-center'>Available rooms</h3>}
+                    <div className='row'>
                     {rooms}
+                    </div>
                 </div>
             </div>
         );

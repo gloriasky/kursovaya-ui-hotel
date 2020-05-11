@@ -124,9 +124,9 @@ export class EditBooking extends React.Component {
         let data = {
             _id: this.state.booking._id,
             roomId: this.state.room._id,
-            guestId: this.state.guestId,
-            from: new Date(this.state.from),
-            to: new Date(this.state.to),
+            guestId: this.state.booking.guestId,
+            from: new Date(this.state.booking.from),
+            to: new Date(this.state.booking.to),
             servicesIds: services,
             status: this.state.status
         };
@@ -354,7 +354,7 @@ export class BookingPage extends React.Component{
         const config = Auth.createConfig();
         config['responseType'] = 'blob';
 
-        axios.get(`${routes.getImage}?search=../images/rooms/room-${this.state.room.roomNumber}.jpg`,config)
+        axios.get(`${routes.getImage}?search=../images/rooms/room-${this.state.room.capacity}.jpg`,config)
             .then(response => {
                 let matrixBlob = new Blob([response.data], {type:"image/jpg"});
                 let fileReader = new FileReader();
@@ -485,7 +485,7 @@ export class BookingPage extends React.Component{
 
                         </div>
                     </div>
-                    <div className='row'>
+                    <div className='row' style={{marginLeft: 10}}>
                         <p>Final price: {this.getFinalPrice()}</p><a className='float-right' href='/my/bookings' onClick={() => this.saveBooking()}>Book</a>
                     </div>
                 </div>
