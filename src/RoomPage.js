@@ -1,17 +1,15 @@
 import React from 'react';
 import * as Auth from './AuthService';
-import * as _ from 'lodash';
 import './RoomPage.css';
 import axios from 'axios';
 import {NavigationBar} from './NavigationBar'
 import {routes} from "./routes";
 import {Button, Card, Modal} from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
 
-class RoomInfo extends React.Component {
+export class RoomInfo extends React.Component {
 
     state = {};
 
@@ -19,18 +17,14 @@ class RoomInfo extends React.Component {
         const config = Auth.createConfig();
         config['responseType'] = 'blob';
 
-        axios.get(`${routes.getImage}?search=../images/rooms/room-${this.props.room.roomNumber}.jpg`,config)
+        axios.get(`${routes.getImage}?search=../images/rooms/room-${this.props.room.capacity}.jpg`,config)
             .then(response => {
-                let matrixData = response; //The response from flask's send_file
-                console.log(response);
-                let matrixBlob = new Blob([matrixData.data], {type:"image/jpg"});
-                console.log(matrixBlob);
+                let matrixBlob = new Blob([response.data], {type:"image/jpg"});
                 let fileReader = new FileReader();
                 fileReader.readAsDataURL(matrixBlob);
                 fileReader.onload = () => {
-                    let result = fileReader.result; console.log(result);
-                    this.setState({ image: result
-                    });
+                    let result = fileReader.result;
+                    this.setState({ image: result });
                 }
             })
             .catch(error => console.log(error))
@@ -46,7 +40,11 @@ class RoomInfo extends React.Component {
         let info = [];
         for (let key in room) {
             if (!['roomNumber','_id', 'status'].includes(key)) {
-                info.push(<p>{Auth.beautifyKey(key)}: {room[key]}</p>)
+                if(key !== 'price') {
+                    info.push(<p>{Auth.beautifyKey(key)}: {room[key]}</p>)
+                } else {
+                    info.push(<p>{Auth.beautifyKey(key)} for {this.props.numOfDays} days: {room[key] * this.props.numOfDays}</p>)
+                }
             }
         }
 
@@ -65,6 +63,7 @@ class RoomInfo extends React.Component {
                     </Card.Title>
                     <Card.Text>
                         {info}
+                        {this.props.button}
                     </Card.Text>
                 </Card.Body>
             </Card>
@@ -262,7 +261,8 @@ export class RoomPage extends React.Component {
     render() {
 
         let rooms = this.state.rooms.map((v, i) => <RoomInfo room={v}
-                                                                            onUpdate={(_id) => this.getRoom(_id)}
+                                                                          numOfDays={1}
+                                                                          onUpdate={(_id) => this.getRoom(_id)}
                                                                           isAdmin={this.state.isAdmin}
                                                                           key={i}/>);
         if (this.state.isAdmin) {
