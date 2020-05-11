@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import * as Auth from './AuthService';
-import './EmployeesPage.css';
+import './GuestsPage.css';
 import {NavigationBar} from './NavigationBar';
 import Table from "react-bootstrap/Table";
 import {routes} from "./routes";
